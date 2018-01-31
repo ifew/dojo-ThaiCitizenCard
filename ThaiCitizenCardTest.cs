@@ -25,6 +25,8 @@ namespace ThaiCitizenCard
 
             Assert.False(actual);
         }
+        
+        [Fact]
         public void Input_9234567890123_Should_Be_False()
         {
             var inputCitizenCard = "9234567890123";
