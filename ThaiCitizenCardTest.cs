@@ -60,6 +60,17 @@ namespace ThaiCitizenCard
         }
 
         [Fact]
+        public void Input_4717321215462_Should_Be_True()
+        {
+            var inputCitizenCard = "4717321215462";
+
+            ThaiCitizenCard thaiCitizenCard = new ThaiCitizenCard();
+            bool actual = thaiCitizenCard.CheckPattern(inputCitizenCard);
+
+            Assert.True(actual);
+        }
+
+        [Fact]
         public void Input_1234567890121_Should_Be_1234567890121_Is_True()
         {
             var inputCitizenCard = "1234567890121";
