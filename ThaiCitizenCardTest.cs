@@ -58,5 +58,29 @@ namespace ThaiCitizenCard
 
             Assert.True(actual);
         }
+
+        [Fact]
+        public void Input_1234567890121_Should_Be_1234567890121_Is_True()
+        {
+            var inputCitizenCard = "1234567890121";
+            var expected = "1234567890121";
+
+            ThaiCitizenCard thaiCitizenCard = new ThaiCitizenCard();
+            string actual = thaiCitizenCard.GetCitizenCardNumber(inputCitizenCard);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Input_4717321215462_Should_Be_4717321215462_Is_True()
+        {
+            var inputCitizenCard = "4717321215462";
+            var expected = "4717321215462";
+
+            ThaiCitizenCard thaiCitizenCard = new ThaiCitizenCard();
+            string actual = thaiCitizenCard.GetCitizenCardNumber(inputCitizenCard);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
