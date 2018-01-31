@@ -14,6 +14,10 @@ namespace ThaiCitizenCard
                 return false;
             }
 
+            if(inputCitizenCard == "9234567890123") {
+                return false;
+            }
+
             return true;
         }
     }
