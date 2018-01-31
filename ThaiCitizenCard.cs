@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace ThaiCitizenCard
 {
@@ -29,16 +30,21 @@ namespace ThaiCitizenCard
 
         public string GetCitizenCardNumber(string inputCitizenCard) {
             char[] citizenCard = inputCitizenCard.ToCharArray();
-            int sumPosition = 0;
+            double sumPosition = 0;
             string expectedCitizenNumber = "";
 
-            for(int inputChar = 0; inputChar < 13; inputChar++) {
-                sumPosition = sumPosition + (citizenCard[inputChar] * (citizenCard.Length-inputChar));
-                expectedCitizenNumber = expectedCitizenNumber + citizenCard[inputChar];
+            for(int inputChar = 0; inputChar < 12; inputChar++) {
+                sumPosition += int.Parse(citizenCard[inputChar].ToString()) * (13-inputChar);
             }
 
-            string lastDigit = (11-(sumPosition % 11)).ToString().Remove(0);
-            expectedCitizenNumber = expectedCitizenNumber + lastDigit;
+            double sumMod = Math.Round(sumPosition % 11, 0);
+            string lastDigit = (11-sumMod).ToString();
+
+            if(lastDigit.Length == 2) {
+                lastDigit =lastDigit.Substring(1,1);
+            }
+
+            expectedCitizenNumber = inputCitizenCard.Substring(0,12) + lastDigit;
 
             return expectedCitizenNumber;
         }
