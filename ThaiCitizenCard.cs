@@ -8,19 +8,31 @@ namespace ThaiCitizenCard
         {
             if(inputCitizenCard.Length == 13) {
                 char[] citizenCard = inputCitizenCard.ToCharArray();
-                for(int inputChar = 0; inputChar < citizenCard.Length; inputChar++) {
-                    if(Char.IsNumber(citizenCard[inputChar]) == false) {
-                        return false;
-                    }
-                }
+                int sumPosition = 0;
+                string expectedCitizenNumber = "";
 
                 if(citizenCard[0] == '0' || citizenCard[0] == '9') {
                     return false;
                 }
 
-                return true;
+                for(int inputChar = 0; inputChar < 13; inputChar++) {
+                    if(Char.IsNumber(citizenCard[inputChar]) == false) {
+                        return false;
+                    }
+                    
+                    sumPosition += citizenCard[inputChar] * (citizenCard.Length-inputChar);
+                    expectedCitizenNumber = expectedCitizenNumber + citizenCard[inputChar];
+                }
+
+                string lastDigit = (11-(sumPosition % 11)).ToString().Remove(0);
+                expectedCitizenNumber = expectedCitizenNumber + lastDigit;
+
+                if(expectedCitizenNumber == inputCitizenCard) {
+                    return true;
+                }
 
             }
+
             return false;
         }
     }
