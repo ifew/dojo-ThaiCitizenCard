@@ -13,8 +13,15 @@ Check Pattern Thai Citizen Card
 ## Test Case
 
 1234567890  False
+
 0234567890123   False
+
 9234567890123   False
+
 1234567890123   False
+
 1234567890121   True
+
+4717321215462   True
+
 and try your Citizen ID must True
