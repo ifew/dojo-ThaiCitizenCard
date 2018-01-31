@@ -6,19 +6,22 @@ namespace ThaiCitizenCard
     {
         internal bool CheckPattern(string inputCitizenCard)
         {
-            if(inputCitizenCard == "1234567890") {
-                return false;
-            }
+            if(inputCitizenCard.Length == 13) {
+                char[] citizenCard = inputCitizenCard.ToCharArray();
+                for(int inputChar = 0; inputChar < citizenCard.Length; inputChar++) {
+                    if(Char.IsNumber(citizenCard[inputChar]) == false) {
+                        return false;
+                    }
+                }
 
-            if(inputCitizenCard == "0234567890123") {
-                return false;
-            }
+                if(citizenCard[0] == '0' || citizenCard[0] == '9') {
+                    return false;
+                }
 
-            if(inputCitizenCard == "9234567890123") {
-                return false;
-            }
+                return true;
 
-            return true;
+            }
+            return false;
         }
     }
 }
